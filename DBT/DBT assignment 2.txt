@@ -1,0 +1,790 @@
+Microsoft Windows [Version 10.0.22000.1098]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\ravik>mysql -u root -p
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 26
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+6 rows in set (0.01 sec)
+
+mysql> create database dashingravi;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| dashingravi        |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.00 sec)
+
+mysql> use dashingravi
+Database changed
+mysql> ;
+ERROR:
+No query specified
+
+mysql> show tables
+    -> ;
+Empty set (0.02 sec)
+
+mysql> create table sdept
+    -> ;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table sdept (deptno char(2),deptname char(15) );
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show tables
+    -> ;
++-----------------------+
+| Tables_in_dashingravi |
++-----------------------+
+| sdept                 |
++-----------------------+
+1 row in set (0.00 sec)
+
+mysql> desc sdept;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deptno   | char(2)  | YES  |     | NULL    |       |
+| deptname | char(15) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+2 rows in set (0.01 sec)
+
+mysql> insert into sdept values(10,'development');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> desc sdept;
++----------+----------+------+-----+---------+-------+
+| Field    | Type     | Null | Key | Default | Extra |
++----------+----------+------+-----+---------+-------+
+| deptno   | char(2)  | YES  |     | NULL    |       |
+| deptname | char(15) | YES  |     | NULL    |       |
++----------+----------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> select * from sdept
+    -> ;
++--------+-------------+
+| deptno | deptname    |
++--------+-------------+
+| 10     | development |
++--------+-------------+
+1 row in set (0.00 sec)
+
+mysql> insert into sdept values(20,'training');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select * from sdept
+    -> ;
++--------+-------------+
+| deptno | deptname    |
++--------+-------------+
+| 10     | development |
+| 20     | training    |
++--------+-------------+
+2 rows in set (0.00 sec)
+
+mysql> create table s;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table supplier(s# varchar(20),sname varchar(20),status int(5),city varchar(15));
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> create table supplier(sno varchar(20),sname varchar(20),status int(5),city varchar(15));
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> show table;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> show tables
+    -> ;
++-----------------------+
+| Tables_in_dashingravi |
++-----------------------+
+| sdept                 |
+| supplier              |
++-----------------------+
+2 rows in set (0.00 sec)
+
+mysql> desc supplier;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sno    | varchar(20) | YES  |     | NULL    |       |
+| sname  | varchar(20) | YES  |     | NULL    |       |
+| status | int         | YES  |     | NULL    |       |
+| city   | varchar(15) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> create table create table P(Pno varchar(5),Pname varchar(10), Color varchar(10), Weight int(5),city varchar(create table P(Pno varchar(5),Pname varchar(10), Color varchar(10), Weight int(5),city varchar(10));
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create table P(Pno varchar(5),Pname varchar(10), Color varchar(10), Weight int(5' at line 1
+mysql> create table Parts(Pno varchar(5),Pname varchar(10), Color varchar(10), Weight int(5),city varchar(10));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> create table project(JNO varchar(10),Jname varchar(10),city varchar(10));
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> create table spj(sno varchar(5),pno varchar (5),jno varchar (5),qty int (5));
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+mysql> show tables;
++-----------------------+
+| Tables_in_dashingravi |
++-----------------------+
+| parts                 |
+| project               |
+| sdept                 |
+| spj                   |
+| supplier              |
++-----------------------+
+5 rows in set (0.00 sec)
+
+mysql> desc supplier;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| sno    | varchar(20) | YES  |     | NULL    |       |
+| sname  | varchar(20) | YES  |     | NULL    |       |
+| status | int         | YES  |     | NULL    |       |
+| city   | varchar(15) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into supplier values ('s1','ravi',10,'dhanbad');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into supplier values
+    -> ('s2','kalankar',20,'indore'),
+    -> ('s3','kamble',30,'delhi'),
+    -> ('s4','sachin',40,'simlapur');
+Query OK, 3 rows affected (0.00 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from supplier;
++------+----------+--------+----------+
+| sno  | sname    | status | city     |
++------+----------+--------+----------+
+| s1   | ravi     |     10 | dhanbad  |
+| s2   | kalankar |     20 | indore   |
+| s3   | kamble   |     30 | delhi    |
+| s4   | sachin   |     40 | simlapur |
++------+----------+--------+----------+
+4 rows in set (0.00 sec)
+
+mysql> select sno,sname from supplier;
++------+----------+
+| sno  | sname    |
++------+----------+
+| s1   | ravi     |
+| s2   | kalankar |
+| s3   | kamble   |
+| s4   | sachin   |
++------+----------+
+4 rows in set (0.00 sec)
+
+mysql> desc parts;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Pno    | varchar(5)  | YES  |     | NULL    |       |
+| Pname  | varchar(10) | YES  |     | NULL    |       |
+| Color  | varchar(10) | YES  |     | NULL    |       |
+| Weight | int         | YES  |     | NULL    |       |
+| city   | varchar(10) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into parts values
+    -> ('01','bhutal','black',10,'london'),
+    -> ('02','rohit','brown',20,'bhutan');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from parts;
++------+--------+-------+--------+--------+
+| Pno  | Pname  | Color | Weight | city   |
++------+--------+-------+--------+--------+
+| 01   | bhutal | black |     10 | london |
+| 02   | rohit  | brown |     20 | bhutan |
++------+--------+-------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> select pname,color from parts where city = 'london';
++--------+-------+
+| pname  | color |
++--------+-------+
+| bhutal | black |
++--------+-------+
+1 row in set (0.00 sec)
+
+mysql> update supplier set city = 'london' where sno = 's3' or sno = 's4';
+Query OK, 2 rows affected (0.00 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from supplier;
++------+----------+--------+---------+
+| sno  | sname    | status | city    |
++------+----------+--------+---------+
+| s1   | ravi     |     10 | dhanbad |
+| s2   | kalankar |     20 | indore  |
+| s3   | kamble   |     30 | london  |
+| s4   | sachin   |     40 | london  |
++------+----------+--------+---------+
+4 rows in set (0.00 sec)
+
+mysql> update supplier set city = 'paris' where sno = 's1' and sno = 's2';
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from supplier;
++------+----------+--------+---------+
+| sno  | sname    | status | city    |
++------+----------+--------+---------+
+| s1   | ravi     |     10 | dhanbad |
+| s2   | kalankar |     20 | indore  |
+| s3   | kamble   |     30 | london  |
+| s4   | sachin   |     40 | london  |
++------+----------+--------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select * from supplier where city = 'london';
++------+--------+--------+--------+
+| sno  | sname  | status | city   |
++------+--------+--------+--------+
+| s3   | kamble |     30 | london |
+| s4   | sachin |     40 | london |
++------+--------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into supplier values ('s5','patil','50','athens'),
+    -> ('s6','sonar',60,'athens');
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select *  from supplier where city = 'athens'or 'london';
++------+-------+--------+--------+
+| sno  | sname | status | city   |
++------+-------+--------+--------+
+| s5   | patil |     50 | athens |
+| s6   | sonar |     60 | athens |
++------+-------+--------+--------+
+2 rows in set, 1 warning (0.00 sec)
+
+mysql> select *  from supplier where city = ('athens', 'london');
+ERROR 1241 (21000): Operand should contain 1 column(s)
+mysql> select *  from supplier;
++------+----------+--------+---------+
+| sno  | sname    | status | city    |
++------+----------+--------+---------+
+| s1   | ravi     |     10 | dhanbad |
+| s2   | kalankar |     20 | indore  |
+| s3   | kamble   |     30 | london  |
+| s4   | sachin   |     40 | london  |
+| s5   | patil    |     50 | athens  |
+| s6   | sonar    |     60 | athens  |
++------+----------+--------+---------+
+6 rows in set (0.00 sec)
+
+mysql> insert into supplier values ('s7','shruti patil','50','paris');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *  from supplier;
++------+--------------+--------+---------+
+| sno  | sname        | status | city    |
++------+--------------+--------+---------+
+| s1   | ravi         |     10 | dhanbad |
+| s2   | kalankar     |     20 | indore  |
+| s3   | kamble       |     30 | london  |
+| s4   | sachin       |     40 | london  |
+| s5   | patil        |     50 | athens  |
+| s6   | sonar        |     60 | athens  |
+| s7   | shruti patil |     50 | paris   |
++------+--------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> update supplier set sname = 'shruti kalankar' where sno = s7;
+ERROR 1054 (42S22): Unknown column 's7' in 'where clause'
+mysql> update supplier set sname = 'shruti kalankar' where sno = 's7';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *  from supplier;
++------+-----------------+--------+---------+
+| sno  | sname           | status | city    |
++------+-----------------+--------+---------+
+| s1   | ravi            |     10 | dhanbad |
+| s2   | kalankar        |     20 | indore  |
+| s3   | kamble          |     30 | london  |
+| s4   | sachin          |     40 | london  |
+| s5   | patil           |     50 | athens  |
+| s6   | sonar           |     60 | athens  |
+| s7   | shruti kalankar |     50 | paris   |
++------+-----------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> update supplier set sname = 'sagar kalankar' where sno = 's7';
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *  from supplier;
++------+----------------+--------+---------+
+| sno  | sname          | status | city    |
++------+----------------+--------+---------+
+| s1   | ravi           |     10 | dhanbad |
+| s2   | kalankar       |     20 | indore  |
+| s3   | kamble         |     30 | london  |
+| s4   | sachin         |     40 | london  |
+| s5   | patil          |     50 | athens  |
+| s6   | sonar          |     60 | athens  |
+| s7   | sagar kalankar |     50 | paris   |
++------+----------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select *  from supplier where city = 'paris' or city = 'athens';
++------+----------------+--------+--------+
+| sno  | sname          | status | city   |
++------+----------------+--------+--------+
+| s5   | patil          |     50 | athens |
+| s6   | sonar          |     60 | athens |
+| s7   | sagar kalankar |     50 | paris  |
++------+----------------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *  from supplier where city = 'paris' and city = 'athens';
+Empty set (0.00 sec)
+
+mysql> select *  from supplier where  'paris' and city = 'athens';
+Empty set, 1 warning (0.00 sec)
+
+mysql> select *  from supplier where city =   'paris' and  'athens';
+Empty set, 1 warning (0.00 sec)
+
+mysql> select *  from supplier where city = 'paris' or city = 'athens';
++------+----------------+--------+--------+
+| sno  | sname          | status | city   |
++------+----------------+--------+--------+
+| s5   | patil          |     50 | athens |
+| s6   | sonar          |     60 | athens |
+| s7   | sagar kalankar |     50 | paris  |
++------+----------------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select *  from project;
+Empty set (0.00 sec)
+
+mysql> desc project;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| JNO   | varchar(10) | YES  |     | NULL    |       |
+| Jname | varchar(10) | YES  |     | NULL    |       |
+| city  | varchar(10) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into project values ('p1','sagar patil','athens'),
+    -> ()
+    -> ;
+ERROR 1136 (21S01): Column count doesn't match value count at row 2
+mysql> insert into project values ('j1','sagar patil','athens');
+ERROR 1406 (22001): Data too long for column 'Jname' at row 1
+mysql> insert into project values ('j1','sagar','athens');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into project values ('j2','sagarpee','paris');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into project values ('j3','rani','paris');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into project values ('j4','robin','bangkok');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select *  from project;
++------+----------+---------+
+| JNO  | Jname    | city    |
++------+----------+---------+
+| j1   | sagar    | athens  |
+| j2   | sagarpee | paris   |
+| j3   | rani     | paris   |
+| j4   | robin    | bangkok |
++------+----------+---------+
+4 rows in set (0.00 sec)
+
+mysql> select *  from project where city = 'athens';
++------+-------+--------+
+| JNO  | Jname | city   |
++------+-------+--------+
+| j1   | sagar | athens |
++------+-------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from parts;
++------+--------+-------+--------+--------+
+| Pno  | Pname  | Color | Weight | city   |
++------+--------+-------+--------+--------+
+| 01   | bhutal | black |     10 | london |
+| 02   | rohit  | brown |     20 | bhutan |
++------+--------+-------+--------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into project values ('03','robin','white',13,'newyork');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> desc parts;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Pno    | varchar(5)  | YES  |     | NULL    |       |
+| Pname  | varchar(10) | YES  |     | NULL    |       |
+| Color  | varchar(10) | YES  |     | NULL    |       |
+| Weight | int         | YES  |     | NULL    |       |
+| city   | varchar(10) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> insert into parts values ('03','robin','white',13,'newyork');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into parts values ('04','ravi','white',14,'pune');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into parts values ('05','rav','white',11,'pune');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into parts values ('06','raj','blue',12,'thane');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into parts values ('07','rajni','brown',15,'noida');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from parts;
++------+--------+-------+--------+---------+
+| Pno  | Pname  | Color | Weight | city    |
++------+--------+-------+--------+---------+
+| 01   | bhutal | black |     10 | london  |
+| 02   | rohit  | brown |     20 | bhutan  |
+| 03   | robin  | white |     13 | newyork |
+| 04   | ravi   | white |     14 | pune    |
+| 05   | rav    | white |     11 | pune    |
+| 06   | raj    | blue  |     12 | thane   |
+| 07   | rajni  | brown |     15 | noida   |
++------+--------+-------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select * from parts where weight between 12 and 14;
++------+-------+-------+--------+---------+
+| Pno  | Pname | Color | Weight | city    |
++------+-------+-------+--------+---------+
+| 03   | robin | white |     13 | newyork |
+| 04   | ravi  | white |     14 | pune    |
+| 06   | raj   | blue  |     12 | thane   |
++------+-------+-------+--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from supplier;
++------+----------------+--------+---------+
+| sno  | sname          | status | city    |
++------+----------------+--------+---------+
+| s1   | ravi           |     10 | dhanbad |
+| s2   | kalankar       |     20 | indore  |
+| s3   | kamble         |     30 | london  |
+| s4   | sachin         |     40 | london  |
+| s5   | patil          |     50 | athens  |
+| s6   | sonar          |     60 | athens  |
+| s7   | sagar kalankar |     50 | paris   |
++------+----------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select * from supplier where status >=20;
++------+----------------+--------+--------+
+| sno  | sname          | status | city   |
++------+----------------+--------+--------+
+| s2   | kalankar       |     20 | indore |
+| s3   | kamble         |     30 | london |
+| s4   | sachin         |     40 | london |
+| s5   | patil          |     50 | athens |
+| s6   | sonar          |     60 | athens |
+| s7   | sagar kalankar |     50 | paris  |
++------+----------------+--------+--------+
+6 rows in set (0.00 sec)
+
+mysql> select * from supplier where status <=30;
++------+----------+--------+---------+
+| sno  | sname    | status | city    |
++------+----------+--------+---------+
+| s1   | ravi     |     10 | dhanbad |
+| s2   | kalankar |     20 | indore  |
+| s3   | kamble   |     30 | london  |
++------+----------+--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from supplier where status =30;
++------+--------+--------+--------+
+| sno  | sname  | status | city   |
++------+--------+--------+--------+
+| s3   | kamble |     30 | london |
++------+--------+--------+--------+
+1 row in set (0.00 sec)
+
+mysql> select * from supplier where status between 30 and 60 ;
++------+----------------+--------+--------+
+| sno  | sname          | status | city   |
++------+----------------+--------+--------+
+| s3   | kamble         |     30 | london |
+| s4   | sachin         |     40 | london |
+| s5   | patil          |     50 | athens |
+| s6   | sonar          |     60 | athens |
+| s7   | sagar kalankar |     50 | paris  |
++------+----------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from supplier where status >='30' and status <= '60' ;
++------+----------------+--------+--------+
+| sno  | sname          | status | city   |
++------+----------------+--------+--------+
+| s3   | kamble         |     30 | london |
+| s4   | sachin         |     40 | london |
+| s5   | patil          |     50 | athens |
+| s6   | sonar          |     60 | athens |
+| s7   | sagar kalankar |     50 | paris  |
++------+----------------+--------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select * from supplier where status >'30' and status < '60' ;
++------+----------------+--------+--------+
+| sno  | sname          | status | city   |
++------+----------------+--------+--------+
+| s4   | sachin         |     40 | london |
+| s5   | patil          |     50 | athens |
+| s7   | sagar kalankar |     50 | paris  |
++------+----------------+--------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from supplier where status <'30' or status >= '60' ;
++------+----------+--------+---------+
+| sno  | sname    | status | city    |
++------+----------+--------+---------+
+| s1   | ravi     |     10 | dhanbad |
+| s2   | kalankar |     20 | indore  |
+| s6   | sonar    |     60 | athens  |
++------+----------+--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select * from supplier where city !='london';
++------+----------------+--------+---------+
+| sno  | sname          | status | city    |
++------+----------------+--------+---------+
+| s1   | ravi           |     10 | dhanbad |
+| s2   | kalankar       |     20 | indore  |
+| s5   | patil          |     50 | athens  |
+| s6   | sonar          |     60 | athens  |
+| s7   | sagar kalankar |     50 | paris   |
++------+----------------+--------+---------+
+5 rows in set (0.00 sec)
+
+mysql> select * from supplier where city !='london' or 'athens';
++------+----------------+--------+---------+
+| sno  | sname          | status | city    |
++------+----------------+--------+---------+
+| s1   | ravi           |     10 | dhanbad |
+| s2   | kalankar       |     20 | indore  |
+| s5   | patil          |     50 | athens  |
+| s6   | sonar          |     60 | athens  |
+| s7   | sagar kalankar |     50 | paris   |
++------+----------------+--------+---------+
+5 rows in set, 1 warning (0.00 sec)
+
+mysql> select * from supplier where city !='london' or city != 'athens';
++------+----------------+--------+---------+
+| sno  | sname          | status | city    |
++------+----------------+--------+---------+
+| s1   | ravi           |     10 | dhanbad |
+| s2   | kalankar       |     20 | indore  |
+| s3   | kamble         |     30 | london  |
+| s4   | sachin         |     40 | london  |
+| s5   | patil          |     50 | athens  |
+| s6   | sonar          |     60 | athens  |
+| s7   | sagar kalankar |     50 | paris   |
++------+----------------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select * from supplier where city !='london' and city != 'athens';
++------+----------------+--------+---------+
+| sno  | sname          | status | city    |
++------+----------------+--------+---------+
+| s1   | ravi           |     10 | dhanbad |
+| s2   | kalankar       |     20 | indore  |
+| s7   | sagar kalankar |     50 | paris   |
++------+----------------+--------+---------+
+3 rows in set (0.00 sec)
+
+mysql> select city from supplier;
++---------+
+| city    |
++---------+
+| dhanbad |
+| indore  |
+| london  |
+| london  |
+| athens  |
+| athens  |
+| paris   |
++---------+
+7 rows in set (0.00 sec)
+
+mysql> select * from parts
+    -> ;
++------+--------+-------+--------+---------+
+| Pno  | Pname  | Color | Weight | city    |
++------+--------+-------+--------+---------+
+| 01   | bhutal | black |     10 | london  |
+| 02   | rohit  | brown |     20 | bhutan  |
+| 03   | robin  | white |     13 | newyork |
+| 04   | ravi   | white |     14 | pune    |
+| 05   | rav    | white |     11 | pune    |
+| 06   | raj    | blue  |     12 | thane   |
+| 07   | rajni  | brown |     15 | noida   |
++------+--------+-------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> desc parts;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Pno    | varchar(5)  | YES  |     | NULL    |       |
+| Pname  | varchar(10) | YES  |     | NULL    |       |
+| Color  | varchar(10) | YES  |     | NULL    |       |
+| Weight | int         | YES  |     | NULL    |       |
+| city   | varchar(10) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql> select * from parts;
++------+--------+-------+--------+---------+
+| Pno  | Pname  | Color | Weight | city    |
++------+--------+-------+--------+---------+
+| 01   | bhutal | black |     10 | london  |
+| 02   | rohit  | brown |     20 | bhutan  |
+| 03   | robin  | white |     13 | newyork |
+| 04   | ravi   | white |     14 | pune    |
+| 05   | rav    | white |     11 | pune    |
+| 06   | raj    | blue  |     12 | thane   |
+| 07   | rajni  | brown |     15 | noida   |
++------+--------+-------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select weight*100 from parts ;
++------------+
+| weight*100 |
++------------+
+|       1000 |
+|       2000 |
+|       1300 |
+|       1400 |
+|       1100 |
+|       1200 |
+|       1500 |
++------------+
+7 rows in set (0.00 sec)
+
+mysql> select weight*1000 from parts ;
++-------------+
+| weight*1000 |
++-------------+
+|       10000 |
+|       20000 |
+|       13000 |
+|       14000 |
+|       11000 |
+|       12000 |
+|       15000 |
++-------------+
+7 rows in set (0.00 sec)
+
+mysql> select weight/1000 from parts ;
++-------------+
+| weight/1000 |
++-------------+
+|      0.0100 |
+|      0.0200 |
+|      0.0130 |
+|      0.0140 |
+|      0.0110 |
+|      0.0120 |
+|      0.0150 |
++-------------+
+7 rows in set (0.00 sec)
+
+mysql> select * from parts where weight*1000;
++------+--------+-------+--------+---------+
+| Pno  | Pname  | Color | Weight | city    |
++------+--------+-------+--------+---------+
+| 01   | bhutal | black |     10 | london  |
+| 02   | rohit  | brown |     20 | bhutan  |
+| 03   | robin  | white |     13 | newyork |
+| 04   | ravi   | white |     14 | pune    |
+| 05   | rav    | white |     11 | pune    |
+| 06   | raj    | blue  |     12 | thane   |
+| 07   | rajni  | brown |     15 | noida   |
++------+--------+-------+--------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select pno,pname,color,weight*1000,weight/1000,city from parts;
++------+--------+-------+-------------+-------------+---------+
+| pno  | pname  | color | weight*1000 | weight/1000 | city    |
++------+--------+-------+-------------+-------------+---------+
+| 01   | bhutal | black |       10000 |      0.0100 | london  |
+| 02   | rohit  | brown |       20000 |      0.0200 | bhutan  |
+| 03   | robin  | white |       13000 |      0.0130 | newyork |
+| 04   | ravi   | white |       14000 |      0.0140 | pune    |
+| 05   | rav    | white |       11000 |      0.0110 | pune    |
+| 06   | raj    | blue  |       12000 |      0.0120 | thane   |
+| 07   | rajni  | brown |       15000 |      0.0150 | noida   |
++------+--------+-------+-------------+-------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select pno,pname,color,weight*1000, weight ,weight/1000,city from parts;
++------+--------+-------+-------------+--------+-------------+---------+
+| pno  | pname  | color | weight*1000 | weight | weight/1000 | city    |
++------+--------+-------+-------------+--------+-------------+---------+
+| 01   | bhutal | black |       10000 |     10 |      0.0100 | london  |
+| 02   | rohit  | brown |       20000 |     20 |      0.0200 | bhutan  |
+| 03   | robin  | white |       13000 |     13 |      0.0130 | newyork |
+| 04   | ravi   | white |       14000 |     14 |      0.0140 | pune    |
+| 05   | rav    | white |       11000 |     11 |      0.0110 | pune    |
+| 06   | raj    | blue  |       12000 |     12 |      0.0120 | thane   |
+| 07   | rajni  | brown |       15000 |     15 |      0.0150 | noida   |
++------+--------+-------+-------------+--------+-------------+---------+
+7 rows in set (0.00 sec)
+
+mysql> select weight*1000 from parts ;
